@@ -1,0 +1,71 @@
+﻿@model IEnumerable<MvcCoreApiCrudDepartamentos2023.Models.Departamento>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Departamentos</h1>
+
+<p>
+    <a asp-controller="Departamentos"
+        asp-action="BuscarLocalidades"
+        class="btn btn-outline-dark">
+        Buscar localidad
+    </a>
+    <a asp-action="CreateDepartamento" 
+        asp-controller="Departamentos" class="btn btn-outline-success">
+        Create New
+    </a>
+</p>
+<table class="table" >
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdDepartamento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Localidad)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdDepartamento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Localidad)
+                </td>
+                <td>
+                    <a asp-controller="Departamentos"
+                    asp-action="Details"
+                    asp-route-iddepartamento="@item.IdDepartamento"
+                    class="btn btn-light">
+                        Detalles
+                    </a>
+                    <a asp-controller="Departamentos"
+                    asp-action="UpdateDepartamento"
+                    asp-route-iddepartamento="@item.IdDepartamento"
+                    class="btn btn-warning">
+                        Update
+                    </a>
+                    <a asp-controller="Departamentos"
+                    asp-action="DeleteDepartamento"
+                    asp-route-iddepartamento="@item.IdDepartamento"
+                    class="btn btn-danger">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
